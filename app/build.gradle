@@ -50,6 +50,7 @@ dependencies {
         implementation project(':moduleStrategy')
         implementation project(':moduleObserver')
         implementation project(':modulemvvm')
+        implementation project(':modulekotlin')
     } else {
         implementation project(':commonLib')
     }

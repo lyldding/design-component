@@ -1,9 +1,16 @@
 apply from: "../module.build.gradle"
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     defaultConfig {
         if (isRunModule.toBoolean()) {
             applicationId "com.lyldding.moduleObserver"
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
         }
     }
     resourcePrefix "observe_"
@@ -17,5 +24,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+    implementation(rootProject.ext.dependencies["butterknife"]) {
+        exclude group: 'com.android.support'
+    }
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 }

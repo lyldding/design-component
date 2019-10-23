@@ -10,6 +10,8 @@ public class Constants {
     public static final String GROUP_OBSERVE = "/group_observe/";
     public static final String GROUP_MVVM = "/group_mvvm/";
 
+    public static final String GROUP_KOTLIN = "/group_kotlin/";
+
     /**
      * 是否需要登录
      */

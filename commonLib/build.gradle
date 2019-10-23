@@ -52,9 +52,7 @@ dependencies {
     api rootProject.ext.dependencies["arouter-api"]
 
     api rootProject.ext.dependencies["eventbus"]
-    api(rootProject.ext.dependencies["butterknife"]) {
-        exclude group: 'com.android.support'
-    }
+
 
     api rootProject.ext.dependencies["mvvm_extensions"]
     api rootProject.ext.dependencies["mvvm_runtime"]

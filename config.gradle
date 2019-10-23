@@ -89,4 +89,13 @@ ext {
             "autodispose"                       : "com.uber.autodispose:autodispose:${otherVersion["autodispose"]}",
             "autodispose-android-archcomponents": "com.uber.autodispose:autodispose-android-archcomponents:${otherVersion["autodispose"]}",
     ]
+
+    kotlin_v = [
+            "version": "1.3.50",
+    ]
+
+    kotlin = [
+            "kotlin-gradle-plugin": "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_v["version"]}",
+            "kotlin-stdlib-jdk"   : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_v["version"]}",
+    ]
 }

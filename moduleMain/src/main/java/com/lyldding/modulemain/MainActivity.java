@@ -1,5 +1,6 @@
 package com.lyldding.modulemain;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -15,7 +16,9 @@ import com.lyldding.modulemain.presenter.PresenterMain;
 
 import java.util.Random;
 
+import androidx.annotation.Nullable;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * @author https://github.com/lyldding
@@ -32,6 +35,8 @@ public class MainActivity extends AbstractBaseMvpActivity<ContractMain.View, Con
     TextView mButton2;
     @BindView(R2.id.button3)
     TextView mButton3;
+    @BindView(R2.id.button4)
+    TextView mButton4;
 
     private Random mRandom;
 
@@ -48,14 +53,17 @@ public class MainActivity extends AbstractBaseMvpActivity<ContractMain.View, Con
 
     @Override
     public void initView() {
+        ButterKnife.bind(this);
         mButton1.setOnClickListener(this);
         mButton2.setOnClickListener(this);
         mButton3.setOnClickListener(this);
+        mButton4.setOnClickListener(this);
         mType.setOnClickListener(this);
 
         mButton1.setVisibility(View.GONE);
         mButton2.setVisibility(View.GONE);
         mButton3.setVisibility(View.GONE);
+        mButton4.setVisibility(View.GONE);
     }
 
     @Override
@@ -68,6 +76,7 @@ public class MainActivity extends AbstractBaseMvpActivity<ContractMain.View, Con
         mButton1.setVisibility(View.VISIBLE);
         mButton2.setVisibility(View.VISIBLE);
         mButton3.setVisibility(View.VISIBLE);
+        mButton4.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -101,6 +110,8 @@ public class MainActivity extends AbstractBaseMvpActivity<ContractMain.View, Con
             });
         } else if (id == R.id.button3) {
             ARouter.getInstance().build(Constants.GROUP_MVVM + path).navigation();
+        } else if (id == R.id.button4) {
+            ARouter.getInstance().build(Constants.GROUP_KOTLIN + path).navigation();
         } else if (id == R.id.type) {
             getPresenter().getData();
         }

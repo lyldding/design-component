@@ -1,1 +1,1 @@
-include ':app', ':moduleStrategy', ':moduleMain', ':moduleObserver', ':commonLib', ':modulemvvm'
+include ':app', ':moduleStrategy', ':moduleMain', ':moduleObserver', ':commonLib', ':modulemvvm', ':modulekotlin'

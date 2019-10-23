@@ -1,8 +1,6 @@
 package com.lyldding.commonlib.mvp;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -10,8 +8,8 @@ import com.lyldding.commonlib.mvp.presenter.IBasePresenter;
 import com.lyldding.commonlib.mvp.view.ILoadView;
 import com.lyldding.commonlib.mvp.view.IToastView;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * @author https://github.com/lyldding
@@ -21,13 +19,11 @@ public abstract class AbstractBaseMvpActivity<V, P extends IBasePresenter<V>>
         extends AppCompatActivity implements IToastView, ILoadView {
     private static final String TAG = "AbstractBaseMvpActivity";
     private P mPresenter;
-    private Unbinder mUnbinder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentViewId());
-        mUnbinder = ButterKnife.bind(this);
         mPresenter = createPresenter();
         if (mPresenter == null) {
             Log.e(TAG, "mPresenter 为空");
@@ -43,9 +39,6 @@ public abstract class AbstractBaseMvpActivity<V, P extends IBasePresenter<V>>
             mPresenter = null;
         }
 
-        if (mUnbinder != null) {
-            mUnbinder.unbind();
-        }
         super.onDestroy();
     }
 

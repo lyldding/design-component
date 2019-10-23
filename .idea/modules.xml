@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/moduleMain/moduleMain.iml" filepath="$PROJECT_DIR$/moduleMain/moduleMain.iml" />
       <module fileurl="file://$PROJECT_DIR$/moduleObserver/moduleObserver.iml" filepath="$PROJECT_DIR$/moduleObserver/moduleObserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/moduleStrategy/moduleStrategy.iml" filepath="$PROJECT_DIR$/moduleStrategy/moduleStrategy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modulekotlin/modulekotlin.iml" filepath="$PROJECT_DIR$/modulekotlin/modulekotlin.iml" />
       <module fileurl="file://$PROJECT_DIR$/modulemvvm/modulemvvm.iml" filepath="$PROJECT_DIR$/modulemvvm/modulemvvm.iml" />
     </modules>
   </component>

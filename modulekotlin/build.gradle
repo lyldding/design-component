@@ -1,20 +1,24 @@
 apply from: "../module.build.gradle"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
 android {
     defaultConfig {
         if (isRunModule.toBoolean()) {
-            applicationId "com.lyldding.modulemvvm"
-        }
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
+            applicationId "com.lyldding.modulekotlin"
         }
     }
-    resourcePrefix "mvvm_"
+    resourcePrefix "kotlin_"
 
 }
+
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -23,6 +27,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
-    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 
+    implementation rootProject.ext.kotlin["kotlin-stdlib-jdk"]
+
+    kapt rootProject.ext.dependencies["arouter-compiler"]
 }
+

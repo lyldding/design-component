@@ -1,5 +1,6 @@
 package com.lyldding.modulestrategy;
 
+import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AlphaAnimation;
@@ -13,11 +14,13 @@ import com.lyldding.commonlib.mvp.AbstractBaseMvpActivity;
 import com.lyldding.modulestrategy.contract.ContractStrategy;
 import com.lyldding.modulestrategy.presenter.PresenterStrategy;
 
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * @author https://github.com/lyldding
@@ -49,6 +52,7 @@ public class StrategyMainActivity extends
 
     @Override
     public void initView() {
+        ButterKnife.bind(this);
         mAdd.setVisibility(View.GONE);
         mSub.setVisibility(View.GONE);
 
