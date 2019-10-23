@@ -1,0 +1,79 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.androidVersion.compileSdkVersion
+    buildToolsVersion rootProject.ext.androidVersion.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.androidVersion.minSdkVersion
+        targetSdkVersion rootProject.ext.androidVersion.targetSdkVersion
+        versionCode rootProject.ext.androidVersion.versionCode
+        versionName rootProject.ext.androidVersion.versionName
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
+
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "boolean", 'IS_DEBUG', 'true'
+        }
+        release {
+            buildConfigField "boolean", 'IS_DEBUG', 'false'
+        }
+    }
+
+    //一下配置  每个lib or module 都要加
+    //=========================================================
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //开启DataBinding
+    dataBinding {
+        enabled isEnableDatabingding.toBoolean()
+    }
+    //=========================================================
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+
+    api rootProject.ext.support["design"]
+    api rootProject.ext.support["support-v4"]
+    api rootProject.ext.support["appcompat-v7"]
+    api rootProject.ext.support["recyclerview-v7"]
+    api rootProject.ext.support["multidex"]
+    api rootProject.ext.support["constraint-layout"]
+
+
+    api rootProject.ext.dependencies["arouter-api"]
+
+    api rootProject.ext.dependencies["eventbus"]
+    api(rootProject.ext.dependencies["butterknife"]) {
+        exclude group: 'com.android.support'
+    }
+
+    api rootProject.ext.dependencies["mvvm_extensions"]
+    api rootProject.ext.dependencies["mvvm_runtime"]
+    api rootProject.ext.dependencies["mvvm_common-java8"]
+
+    api rootProject.ext.dependencies["room_runtime"]
+    api rootProject.ext.dependencies["room_rxjava2"]
+    annotationProcessor rootProject.ext.dependencies["room_compiler"]
+
+    api rootProject.ext.dependencies["gson"]
+
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["converter-gson"]
+    api rootProject.ext.dependencies["adapter-rxjava"]
+
+    api rootProject.ext.dependencies["rxjava"]
+    api rootProject.ext.dependencies["rxandroid"]
+
+    api rootProject.ext.dependencies["autodispose"]
+    api rootProject.ext.dependencies["autodispose-android-archcomponents"]
+}
+

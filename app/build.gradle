@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.androidVersion.compileSdkVersion
+    buildToolsVersion rootProject.ext.androidVersion.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.lyldding.components"
+        minSdkVersion rootProject.ext.androidVersion.minSdkVersion
+        targetSdkVersion rootProject.ext.androidVersion.targetSdkVersion
+        versionCode rootProject.ext.androidVersion.versionCode
+        versionName rootProject.ext.androidVersion.versionName
+        multiDexEnabled rootProject.ext.androidVersion.multiDexEnabled
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //一下配置  每个lib or module 都要加
+    //=========================================================
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //开启DataBinding
+    dataBinding {
+        enabled isEnableDatabingding.toBoolean()
+    }
+    //=========================================================
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    if (!isRunModule.toBoolean()) {
+        implementation project(':moduleMain')
+        implementation project(':moduleStrategy')
+        implementation project(':moduleObserver')
+        implementation project(':modulemvvm')
+    } else {
+        implementation project(':commonLib')
+    }
+}
