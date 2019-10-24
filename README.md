@@ -1,5 +1,5 @@
 # design-component
-组件化开发Demo，适配AndroidX，包含MVP、MVVM开发架构
+## 1 组件化开发Demo，适配AndroidX，包含MVP、MVVM开发架构
 
 ![image](https://img-blog.csdnimg.cn/20191023104144859.png)
 
@@ -24,3 +24,7 @@ isRunModule=false // 集成模式
     }
    
 ```
+## 2新增moduleKotlin
+
+实现组件化中java module和kotlin module 混用，主要就是一些grade配置的变化
+
