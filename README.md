@@ -1,6 +1,8 @@
 # design-component
 ## 1 组件化开发Demo，适配AndroidX，包含MVP、MVVM开发架构
 
+[AndroidX组件化搭建MVP、MVVM以及混合使用kotlin模块](https://blog.csdn.net/lylddingHFFW/article/details/102719721)
+
 ![image](https://img-blog.csdnimg.cn/20191023104144859.png)
 
 在grade.properties中修改isRunModule来切换集成和module，每次切换要重新编译
