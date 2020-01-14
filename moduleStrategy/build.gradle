@@ -7,7 +7,6 @@ android {
             applicationId "com.lyldding.modulestrategy"
         }
 
-
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]

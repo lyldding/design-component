@@ -12,8 +12,6 @@ import com.lyldding.commonlib.utils.MainLooper;
 import com.lyldding.commonlib.utils.RxjavaUtils;
 import com.lyldding.modulemvvm.bean.UserBean;
 import com.lyldding.modulemvvm.bean.UserNoLiveBean;
-import com.uber.autodispose.AutoDispose;
-import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;

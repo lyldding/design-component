@@ -1,3 +1,4 @@
+//切换集成和module
 if (isRunModule.toBoolean()) {
     apply plugin: 'com.android.application'
 } else {
@@ -22,6 +23,7 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
+            //AndroidManifest路径
             if (isRunModule.toBoolean()) {
                 manifest.srcFile 'src/main/module/AndroidManifest.xml'
             } else {

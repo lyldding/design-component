@@ -1,6 +1,5 @@
 package com.lyldding.modulemain;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,7 +15,6 @@ import com.lyldding.modulemain.presenter.PresenterMain;
 
 import java.util.Random;
 
-import androidx.annotation.Nullable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -54,6 +52,7 @@ public class MainActivity extends AbstractBaseMvpActivity<ContractMain.View, Con
     @Override
     public void initView() {
         ButterKnife.bind(this);
+        // ARouter.getInstance().inject(this);
         mButton1.setOnClickListener(this);
         mButton2.setOnClickListener(this);
         mButton3.setOnClickListener(this);

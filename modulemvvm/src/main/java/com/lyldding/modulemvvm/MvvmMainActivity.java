@@ -10,6 +10,13 @@ import com.lyldding.modulemvvm.bean.UserBean;
 import com.lyldding.modulemvvm.databinding.MvvmActivityMainBinding;
 import com.lyldding.modulemvvm.viewmodel.VMUser;
 
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 
 /**
  * @author https://github.com/lyldding
@@ -51,10 +58,45 @@ public class MvvmMainActivity extends AbstractBaseMvvmActivity<MvvmActivityMainB
 
     @Override
     public void onClick(View view) {
-        LogUtils.e("haaoaha");
-        if (view.getId() == R.id.title) {
-            getViewModel().loadUserInfo();
-            getViewModel().getWeatherInfo("11");
+        ExecutorService executorService = new ThreadPoolExecutor(0, 60,
+                10, TimeUnit.SECONDS, new SynchronousQueue<Runnable>(), new ThreadFactory() {
+            @Override
+            public Thread newThread(Runnable r) {
+                return new Thread(r, "test");
+            }
+        });
+        CountDownLatch countDownLatch = new CountDownLatch(2);
+        long start = System.currentTimeMillis();
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                LogUtils.d("000000");
+                countDownLatch.countDown();
+                LogUtils.d("111111111");
+            }
+        });
+
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                LogUtils.d("33333333");
+                countDownLatch.countDown();
+                LogUtils.d("2222222");
+            }
+        });
+
+        try {
+            countDownLatch.await();
+            LogUtils.d("55555555555");
+            LogUtils.d("time = " + (System.currentTimeMillis() - start));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+
+//        LogUtils.e("haaoaha");
+//        if (view.getId() == R.id.title) {
+//            getViewModel().loadUserInfo();
+//            getViewModel().getWeatherInfo("11");
+//        }
     }
 }

@@ -5,7 +5,7 @@ package com.lyldding.commonlib.http.base;
  * @date 2019/10/16
  */
 public class BaseEntity<T> {
-    private int code;
+    private int code = Integer.MIN_VALUE;
     private String msg = "";
     private T data;
 

@@ -61,7 +61,10 @@ public abstract class AbstractBaseMvvmActivity<V extends ViewDataBinding, VM ext
     @Override
     protected void onDestroy() {
         if (mViewModel != null) {
-            getLifecycle().addObserver(mViewModel);
+            getLifecycle().removeObserver(mViewModel);
+        }
+        if (mBinding != null) {
+            mBinding.unbind();
         }
         super.onDestroy();
     }
